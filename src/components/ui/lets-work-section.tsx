@@ -36,7 +36,7 @@ export function LetsWorkTogether() {
     }
 
     return (
-        <section className="flex min-h-screen items-center justify-center px-6 overflow-hidden relative">
+        <section id="home" className="flex min-h-screen items-center justify-center px-6 overflow-hidden relative">
             <HeroGeometricBackground />
             <div className="relative flex flex-col items-center gap-12 w-full max-w-4xl z-10">
                 {/* Success View (Overlay) */}
@@ -249,18 +249,18 @@ export function LetsWorkTogether() {
                                     handleClick('waitlist')
                                 }}
                                 variant="default"
-                                className="bg-primary text-primary-foreground hover:bg-primary/90 min-w-[200px] cursor-pointer"
+                                className="bg-primary text-primary-foreground hover:bg-primary/90 min-w-[240px] cursor-pointer"
                             />
                             <SlideTextButton
                                 text="Investors"
-                                hoverText="View Deck"
+                                hoverText="Let's Connect"
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault()
                                     handleClick('investors')
                                 }}
                                 variant="ghost"
-                                className="min-w-[200px] cursor-pointer"
+                                className="min-w-[240px] cursor-pointer"
                             />
                         </div>
                     </div>

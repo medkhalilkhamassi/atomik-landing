@@ -6,10 +6,8 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 
 const menuItems = [
-    { name: 'How it works', href: '#how-it-works' },
+    { name: 'The Problem', href: '#manifesto' },
     { name: 'Agents', href: '#agents' },
-    { name: 'Benefits', href: '#benefits' },
-    { name: 'Mechanics', href: '#mechanics' },
     { name: 'FAQ', href: '#faq' },
 ]
 
@@ -90,8 +88,9 @@ export default function SiteHeader() {
                                     variant="default"
                                     size="sm"
                                     className="w-full sm:w-auto"
-                                    onClick={() => document.querySelector('#waitlist')?.scrollIntoView({ behavior: 'smooth' })}>
+                                    onClick={() => document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })}>
                                     Join Waitlist
+
                                 </Button>
                             </div>
                         </div>

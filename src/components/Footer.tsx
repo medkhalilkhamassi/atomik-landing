@@ -2,7 +2,7 @@
 
 export default function Footer() {
     return (
-        <footer className="bg-background border-t border-border py-12">
+        <footer className="bg-background py-12">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
 
                 <div className="text-center md:text-left">

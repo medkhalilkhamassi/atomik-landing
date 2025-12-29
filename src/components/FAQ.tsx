@@ -32,7 +32,7 @@ export default function FAQ() {
     ];
 
     return (
-        <section className="min-h-screen flex items-center justify-center bg-background py-24">
+        <section id="faq" className="min-h-screen flex items-center justify-center bg-background py-24">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 w-full">
                 <h2 className="text-3xl font-bold tracking-tight text-foreground mb-16 text-center">
                     Frequently Asked Questions

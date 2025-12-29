@@ -129,6 +129,9 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 80px;
+  /* Offset for sticky header if needed, though header is fixed/transparent */
 }
 
 body {

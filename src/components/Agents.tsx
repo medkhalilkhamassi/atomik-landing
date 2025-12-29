@@ -1,93 +1,70 @@
-'use client';
-
-import { Telescope, Map, Palette, Layers, ShieldCheck, Gavel } from 'lucide-react';
+import { TestimonialSlider, type Review } from '@/components/ui/testimonial-slider';
 
 export default function Agents() {
-    const agents = [
+    const agents: Review[] = [
         {
-            name: 'Mary',
-            role: 'Analyst',
-            title: 'The Treasure Hunter',
-            description: 'Digs for market insights and requirements so you don’t build the wrong thing.',
-            icon: Telescope
+            id: 1,
+            name: "Mary",
+            affiliation: "Analyst Agent",
+            quote: "I scan thousands of market signals in seconds so you don't have to guess what features to build.",
+            imageSrc: "/images/mary-v3.png",
+            thumbnailSrc: "/images/mary-v3.png",
         },
         {
-            name: 'John',
-            role: 'PM',
-            title: 'The Strategist',
-            description: 'Breaks down visions into executable roadmaps and concrete tasks.',
-            icon: Map
+            id: 2,
+            name: "John",
+            affiliation: "Product Manager Agent",
+            quote: "I turn your messy brain dumps into pristine, developer-ready application specs.",
+            imageSrc: "/images/john-v3.png",
+            thumbnailSrc: "/images/john-v3.png",
         },
         {
-            name: 'Sally',
-            role: 'Designer',
-            title: 'The Artist',
-            description: 'Ensures the user experience is intuitive, accessible, and delightful.',
-            icon: Palette
+            id: 3,
+            name: "Sally",
+            affiliation: "Designer Agent",
+            quote: "I ensure your UI isn't just functional, but pixel-perfect and accessible by default.",
+            imageSrc: "/images/sally-v3.png",
+            thumbnailSrc: "/images/sally-v3.png",
         },
         {
-            name: 'Winston',
-            role: 'Architect',
-            title: 'The Scaler',
-            description: 'Designs robust systems that can handle growth without collapsing.',
-            icon: Layers
+            id: 4,
+            name: "Winston",
+            affiliation: "DevOps Agent",
+            quote: "I handle the plumbing. CI/CD, infrastructure, and deployment are my playground.",
+            imageSrc: "/images/winston-v3.png",
+            thumbnailSrc: "/images/winston-v3.png",
         },
         {
-            name: 'Murat',
-            role: 'QA Lead',
-            title: 'The Skeptic',
-            description: 'Hunts for bugs and edge cases. Nothing gets past strict validation.',
-            icon: ShieldCheck
+            id: 5,
+            name: "Murat",
+            affiliation: "QA Agent",
+            quote: "I break things before your users do. If there's a bug, I'll find it.",
+            imageSrc: "/images/murat-v3.png",
+            thumbnailSrc: "/images/murat-v3.png",
         },
         {
-            name: 'Amelia',
-            role: 'Gatekeeper',
-            title: 'The Judge',
-            description: 'The final arbiter of quality. Enforces standards before deployment.',
-            icon: Gavel
+            id: 6,
+            name: "Amelia",
+            affiliation: "Security Agent",
+            quote: "I keep the gates locked. Vulnerabilities don't stand a chance on my watch.",
+            imageSrc: "/images/amelia-v3.png",
+            thumbnailSrc: "/images/amelia-v3.png",
         }
     ];
 
     return (
         <section id="agents" className="min-h-screen flex items-center justify-center bg-background py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-                <div className="text-center mb-20">
+                <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                        Meet the Agents
+                        Meet Your New Workforce
                     </h2>
-                    <p className="mt-6 text-lg text-muted-foreground">
-                        Your specialized AI workforce, running 24/7.
+                    <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+                        A specialized team of AI agents working in concert to ship your vision.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {agents.map((agent) => (
-                        <div key={agent.name} className="group relative overflow-hidden rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border transition-all hover:shadow-lg hover:ring-primary/20">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted group-hover:bg-primary/10 transition-colors">
-                                    <agent.icon className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-semibold leading-7 tracking-tight text-foreground">
-                                        {agent.name}
-                                    </h3>
-                                    <p className="text-sm font-semibold leading-6 text-primary">
-                                        {agent.role}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="relative">
-                                <p className="text-sm font-medium text-foreground italic mb-2">
-                                    "{agent.title}"
-                                </p>
-                                <p className="text-sm leading-6 text-muted-foreground">
-                                    {agent.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <TestimonialSlider reviews={agents} autoplay={true} />
             </div>
         </section>
     );

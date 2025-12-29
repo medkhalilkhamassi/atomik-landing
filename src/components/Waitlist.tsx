@@ -18,7 +18,7 @@ export default function Waitlist() {
 
     if (status === 'success') {
         return (
-            <section id="waitlist" className="min-h-screen flex items-center justify-center bg-background border-y border-border text-center py-32">
+            <section id="waitlist" className="min-h-screen flex items-center justify-center bg-background text-center py-32">
                 <div className="mx-auto max-w-md px-4 w-full">
                     <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                         <Check className="w-8 h-8 text-primary-foreground" />
@@ -40,7 +40,7 @@ export default function Waitlist() {
     }
 
     return (
-        <section id="waitlist" className="min-h-screen flex items-center justify-center bg-background border-y border-border py-24">
+        <section id="waitlist" className="min-h-screen flex items-center justify-center bg-background py-24">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center w-full">
                 <h2 className="text-3xl font-bold tracking-tight mb-6">
                     Get early access to Atomik.

@@ -5,7 +5,7 @@ import { Download, Mail } from 'lucide-react';
 
 export default function Investors() {
     return (
-        <section id="investors" className="min-h-screen flex items-center justify-center bg-background border-y border-border py-24">
+        <section id="investors" className="min-h-screen flex items-center justify-center bg-background py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
                 <div className="text-center mb-24">
                     <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

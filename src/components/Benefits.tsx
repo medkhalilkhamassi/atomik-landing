@@ -18,7 +18,7 @@ export default function Benefits() {
     ];
 
     return (
-        <section className="min-h-screen flex items-center justify-center bg-background py-24">
+        <section id="benefits" className="min-h-screen flex items-center justify-center bg-background py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
                 <div className="grid md:grid-cols-2 gap-20 lg:gap-32">
 
