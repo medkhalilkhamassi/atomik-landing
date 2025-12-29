@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function Footer() {
     return (
         <footer className="bg-background py-12">
@@ -11,17 +13,17 @@ export default function Footer() {
                 </div>
 
                 <div className="flex gap-8 text-sm text-muted-foreground">
-                    <a href="#" className="hover:text-foreground">Deck</a>
-                    <a href="#" className="hover:text-foreground">Twitter</a>
-                    <a href="#" className="hover:text-foreground">LinkedIn</a>
+                    <a href="mailto:hello@atomik.dev?subject=Atomik%20Deck%20Request" className="hover:text-foreground transition-colors">Deck (on request)</a>
+                    <span title="Coming Soon" className="cursor-not-allowed opacity-50">Twitter</span>
+                    <span title="Coming Soon" className="cursor-not-allowed opacity-50">LinkedIn</span>
                 </div>
 
                 <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm text-muted-foreground">
-                    <a href="mailto:hello@atomik.dev" className="hover:text-primary">hello@atomik.dev</a>
+                    <a href="mailto:hello@atomik.dev" className="hover:text-primary transition-colors">hello@atomik.dev</a>
 
                     <div className="flex gap-4">
-                        <a href="#" className="hover:text-foreground">Privacy</a>
-                        <a href="#" className="hover:text-foreground">Terms</a>
+                        <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
+                        <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>
                     </div>
                 </div>
 

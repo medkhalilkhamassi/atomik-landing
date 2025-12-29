@@ -8,8 +8,34 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://atomik.dev'),
   title: "Atomik | Specs In → Code Out",
-  description: "Atomik turns vague ideas into testable micro-tasks, gets them built by developers, and releases payment only when automated tests pass.",
+  description: "Atomik turns vague ideas into testable micro-tasks, gets them built by vetted developers, and releases payment only when automated tests pass.",
+  openGraph: {
+    title: "Atomik | Specs In → Code Out",
+    description: "Atomik turns vague ideas into testable micro-tasks and delivers production-ready code through vetted developers — faster, safer, and fully auditable.",
+    url: "https://atomik.dev",
+    siteName: "Atomik",
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+        alt: "Atomik - Specs In, Code Out",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Atomik | Specs In → Code Out",
+    description: "Atomik turns vague ideas into testable micro-tasks and delivers production-ready code through vetted developers — faster, safer, and fully auditable.",
+    images: ["/og.png"],
+  },
+  alternates: {
+    canonical: "https://atomik.dev",
+  },
 };
 
 export default function RootLayout({
@@ -17,11 +43,133 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Atomik",
+        "url": "https://atomik.dev",
+        "logo": "https://atomik.dev/og.png",
+        "description": "Atomik turns vague ideas into testable micro-tasks and delivers production-ready code through vetted developers."
+      },
+      {
+        "@type": "WebSite",
+        "name": "Atomik",
+        "url": "https://atomik.dev",
+        "description": "Platform for converting specs into verified code.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Atomik"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What exactly do I get?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You get production-ready code that passes your specifications and automated tests. It's not a prototype; it's a merged pull request."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you prevent bad work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We don't rely on reviews. We rely on tests. If the code doesn't pass the provided test suite, the developer doesn't get paid. The system is binary."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What stacks do you support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Currently we are optimized for modern web stacks: React, Next.js, Node.js, Python, and TypeScript. More specific constraints can be defined in your specs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast is it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most micro-tasks are claimed within minutes and completed within 12 hours. You can parallelize dozens of tasks to build features overnight."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who owns the code?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You do. 100%. Code is work-for-hire and ownership transfers upon payment release from escrow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do developer payouts work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Payouts are instant upon verified test completion. We handle the escrow and transfer, developers get paid in USD or USDC."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <html lang="en" className="dark">
       <body
         className={`${inter.variable} antialiased`}
       >
+        {/* 
+            Netlify Form Detection Helpers 
+            These must be statically present in the HTML export for Netlify to detect them.
+            Actual submission happens via React/fetch, but these hidden forms register the handlers.
+        */}
+        <form name="waitlist" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+          <input type="text" name="email" />
+          <input type="text" name="role" />
+          <input type="text" name="name" />
+          <input type="text" name="company" />
+          {/* Analytics Fields */}
+          <input type="hidden" name="utm_source" />
+          <input type="hidden" name="utm_medium" />
+          <input type="hidden" name="utm_campaign" />
+          <input type="hidden" name="utm_term" />
+          <input type="hidden" name="utm_content" />
+          <input type="hidden" name="referrer" />
+          <input type="hidden" name="landing_path" />
+          <input type="hidden" name="cta_source" />
+          <input type="hidden" name="submitted_at" />
+          <input name="bot-field" />
+        </form>
+
+        <form name="investor-contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+          <input type="text" name="firstName" />
+          <input type="text" name="lastName" />
+          <input type="email" name="email" />
+          <input type="text" name="company" />
+          <input type="text" name="position" />
+          {/* Analytics Fields */}
+          <input type="hidden" name="utm_source" />
+          <input type="hidden" name="utm_medium" />
+          <input type="hidden" name="utm_campaign" />
+          <input type="hidden" name="utm_term" />
+          <input type="hidden" name="utm_content" />
+          <input type="hidden" name="referrer" />
+          <input type="hidden" name="landing_path" />
+          <input type="hidden" name="cta_source" />
+          <input type="hidden" name="submitted_at" />
+          <input name="bot-field" />
+        </form>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

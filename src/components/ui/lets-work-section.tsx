@@ -1,14 +1,15 @@
 "use client"
 
-import type React from "react"
+
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { ArrowUpRight, Mail, ArrowLeft } from "lucide-react"
 import SlideTextButton from "@/components/kokonutui/slide-text-button"
 import { HeroGeometricBackground } from "@/components/ui/shape-landing-hero"
-import { RideBookingForm } from "@/components/ui/ride-booking-form"
+import { InvestorContactForm } from "@/components/ui/investor-contact-form"
+import { getAttributionFromLocation, type AttributionData } from "@/lib/attribution"
 
 export function LetsWorkTogether() {
     const router = useRouter()
@@ -18,10 +19,37 @@ export function LetsWorkTogether() {
     const [isButtonHovered, setIsButtonHovered] = useState(false)
     const [mode, setMode] = useState<'waitlist' | 'investors'>('waitlist')
 
+    // Analytics State
+    const [ctaSource, setCtaSource] = useState("hero_primary")
+    const [attribution, setAttribution] = useState<AttributionData>({})
+
     // Waitlist Form State
     const [email, setEmail] = useState("")
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
     const [errorMessage, setErrorMessage] = useState("")
+    const emailInputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        const handleOpenWaitlist = () => {
+            setCtaSource("header")
+            handleClick('waitlist')
+        }
+        window.addEventListener('open-waitlist', handleOpenWaitlist)
+        return () => window.removeEventListener('open-waitlist', handleOpenWaitlist)
+    }, [])
+
+    useEffect(() => {
+        setAttribution(getAttributionFromLocation())
+    }, [])
+
+    useEffect(() => {
+        if (showSuccess && mode === 'waitlist' && emailInputRef.current) {
+            // Small delay to ensure transition fits
+            setTimeout(() => {
+                emailInputRef.current?.focus()
+            }, 100)
+        }
+    }, [showSuccess, mode])
 
     const handleClick = (selectedMode: 'waitlist' | 'investors') => {
         setMode(selectedMode)
@@ -59,6 +87,17 @@ export function LetsWorkTogether() {
             formData.append("form-name", "waitlist")
             formData.append("email", email)
 
+            // Analytics Fields
+            formData.append("cta_source", ctaSource)
+            formData.append("submitted_at", new Date().toISOString())
+            if (attribution.utm_source) formData.append("utm_source", attribution.utm_source)
+            if (attribution.utm_medium) formData.append("utm_medium", attribution.utm_medium)
+            if (attribution.utm_campaign) formData.append("utm_campaign", attribution.utm_campaign)
+            if (attribution.utm_term) formData.append("utm_term", attribution.utm_term)
+            if (attribution.utm_content) formData.append("utm_content", attribution.utm_content)
+            if (attribution.referrer) formData.append("referrer", attribution.referrer)
+            if (attribution.landing_path) formData.append("landing_path", attribution.landing_path)
+
             const response = await fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -88,29 +127,30 @@ export function LetsWorkTogether() {
             <div className="relative flex flex-col items-center gap-12 w-full max-w-6xl z-10">
                 {/* Success View (Overlay) */}
                 <div
-                    className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="absolute inset-0 z-10 flex flex-col items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     style={{
                         opacity: showSuccess ? 1 : 0,
                         transform: showSuccess ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
                         pointerEvents: showSuccess ? "auto" : "none",
                     }}
                 >
-                    {/* Back Arrow */}
-                    <button
-                        onClick={handleBack}
-                        className="absolute top-0 left-0 lg:-left-12 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label="Go back"
-                    >
-                        <ArrowLeft className="size-6" />
-                    </button>
+                    {/* Back Arrow - Aligned to match RideBookingForm (p-12 - ml-2 = left-10) */}
+                    {mode !== 'investors' && (
+                        <button
+                            onClick={handleBack}
+                            className="absolute top-4 left-2 lg:top-12 lg:left-10 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors"
+                            aria-label="Go back"
+                        >
+                            <ArrowLeft className="size-6" />
+                        </button>
+                    )}
 
                     {mode === 'investors' ? (
                         <div className="w-full h-full flex items-center justify-center scale-90 md:scale-100">
-                            <RideBookingForm
-                                imageUrl="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop"
-                                city="San Francisco, CA"
-                                onSearch={handleInvestorSearch}
+                            <InvestorContactForm
+                                onBack={handleBack}
                                 className="mt-4"
+                                ctaSource={ctaSource}
                             />
                         </div>
                     ) : (
@@ -169,6 +209,16 @@ export function LetsWorkTogether() {
                                     }}
                                 >
                                     <input type="hidden" name="form-name" value="waitlist" />
+                                    {/* Analytics Inputs */}
+                                    <input type="hidden" name="cta_source" value={ctaSource} />
+                                    <input type="hidden" name="utm_source" value={attribution.utm_source || ""} />
+                                    <input type="hidden" name="utm_medium" value={attribution.utm_medium || ""} />
+                                    <input type="hidden" name="utm_campaign" value={attribution.utm_campaign || ""} />
+                                    <input type="hidden" name="utm_term" value={attribution.utm_term || ""} />
+                                    <input type="hidden" name="utm_content" value={attribution.utm_content || ""} />
+                                    <input type="hidden" name="referrer" value={attribution.referrer || ""} />
+                                    <input type="hidden" name="landing_path" value={attribution.landing_path || ""} />
+
                                     <p className="hidden">
                                         <label>
                                             Don’t fill this out: <input name="bot-field" />
@@ -177,6 +227,7 @@ export function LetsWorkTogether() {
 
                                     <div className="relative w-full">
                                         <input
+                                            ref={emailInputRef}
                                             type="email"
                                             name="email"
                                             required
@@ -350,6 +401,7 @@ export function LetsWorkTogether() {
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault()
+                                    setCtaSource("hero_primary")
                                     handleClick('waitlist')
                                 }}
                                 variant="default"
@@ -361,6 +413,7 @@ export function LetsWorkTogether() {
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault()
+                                    setCtaSource("hero_secondary")
                                     handleClick('investors')
                                 }}
                                 variant="ghost"
@@ -385,7 +438,8 @@ export function LetsWorkTogether() {
                     {/* <span className="text-xs tracking-widest uppercase text-muted-foreground/60">hello@atomik.dev</span> */}
                 </div>
 
-            </div>
-        </section>
+            </div >
+        </section >
     )
 }
+

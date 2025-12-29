@@ -88,7 +88,11 @@ export default function SiteHeader() {
                                     variant="default"
                                     size="sm"
                                     className="w-full sm:w-auto"
-                                    onClick={() => document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })}>
+                                    onClick={() => {
+                                        document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' });
+                                        // Dispatch event to open waitlist in Hero
+                                        window.dispatchEvent(new CustomEvent('open-waitlist'));
+                                    }}>
                                     Join Waitlist
 
                                 </Button>
