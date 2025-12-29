@@ -16,6 +16,11 @@ export function LetsWorkTogether() {
     const [isButtonHovered, setIsButtonHovered] = useState(false)
     const [mode, setMode] = useState<'waitlist' | 'investors'>('waitlist')
 
+    // Waitlist Form State
+    const [email, setEmail] = useState("")
+    const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+    const [errorMessage, setErrorMessage] = useState("")
+
     const handleClick = (selectedMode: 'waitlist' | 'investors') => {
         setMode(selectedMode)
         setIsClicked(true)
@@ -28,6 +33,8 @@ export function LetsWorkTogether() {
         setShowSuccess(false)
         setTimeout(() => {
             setIsClicked(false)
+            // Reset form state on back? Maybe not, to keep data.
+            // setFormStatus('idle') 
         }, 500)
     }
 
@@ -38,6 +45,35 @@ export function LetsWorkTogether() {
 
     const handleInvestorSearch = (details: any) => {
         console.log("Investor search:", details)
+    }
+
+    const handleWaitlistSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setFormStatus('submitting')
+        setErrorMessage("")
+
+        try {
+            const formData = new URLSearchParams()
+            formData.append("form-name", "waitlist")
+            formData.append("email", email)
+
+            const response = await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: formData.toString(),
+            })
+
+            if (response.ok) {
+                setFormStatus('success')
+                setEmail("")
+            } else {
+                setFormStatus('error')
+                setErrorMessage("Something went wrong. Please try again.")
+            }
+        } catch (error) {
+            setFormStatus('error')
+            setErrorMessage("Network error. Please try again.")
+        }
     }
 
     return (
@@ -82,7 +118,7 @@ export function LetsWorkTogether() {
                                         transitionDelay: "100ms",
                                     }}
                                 >
-                                    Automated
+                                    Join
                                 </span>
                                 <h3
                                     className="text-3xl font-light tracking-tight text-foreground transition-all duration-500 sm:text-4xl"
@@ -96,79 +132,122 @@ export function LetsWorkTogether() {
                                 </h3>
                             </div>
 
-                            {/* Success Action Button */}
-                            <button
-                                onClick={handleFinalAction}
-                                onMouseEnter={() => setIsButtonHovered(true)}
-                                onMouseLeave={() => setIsButtonHovered(false)}
-                                className="group relative flex items-center gap-4 transition-all duration-500 cursor-pointer"
-                                style={{
-                                    transform: showSuccess
-                                        ? isButtonHovered
-                                            ? "translateY(0) scale(1.02)"
-                                            : "translateY(0) scale(1)"
-                                        : "translateY(15px) scale(1)",
-                                    opacity: showSuccess ? 1 : 0,
-                                    transitionDelay: "150ms",
-                                }}
-                            >
-                                <div
-                                    className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
+                            {/* Waitlist Form */}
+                            {formStatus === 'success' ? (
+                                <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
+                                    <h3 className="text-2xl font-light text-foreground mb-4">You're on the list.</h3>
+                                    <p className="text-muted-foreground mb-6">Check your inbox for updates.</p>
+                                    <button
+                                        onClick={() => {
+                                            navigator.clipboard.writeText("https://atomik.dev");
+                                            // Optional: show copied toast
+                                        }}
+                                        className="text-sm font-medium text-primary hover:text-primary/80 transition-colors cursor-pointer"
+                                    >
+                                        Share Atomik
+                                    </button>
+                                </div>
+                            ) : (
+                                <form
+                                    name="waitlist"
+                                    method="POST"
+                                    data-netlify="true"
+                                    data-netlify-honeypot="bot-field"
+                                    onSubmit={handleWaitlistSubmit}
+                                    className="relative flex flex-col items-center gap-6 w-full max-w-sm"
                                     style={{
-                                        transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
-                                        opacity: isButtonHovered ? 0 : 0.5,
-                                    }}
-                                />
-                                <div
-                                    className="relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4"
-                                    style={{
-                                        borderColor: isButtonHovered ? "var(--foreground)" : "var(--border)",
-                                        backgroundColor: isButtonHovered ? "var(--foreground)" : "transparent",
-                                        boxShadow: isButtonHovered ? "0 0 30px rgba(0,0,0,0.1), 0 10px 40px rgba(0,0,0,0.08)" : "none",
+                                        transform: showSuccess ? "translateY(0)" : "translateY(15px)",
+                                        opacity: showSuccess ? 1 : 0,
+                                        transition: "all 500ms cubic-bezier(0.16, 1, 0.3, 1) 150ms",
                                     }}
                                 >
-                                    <Mail
-                                        className="size-4 transition-all duration-500 sm:size-5"
-                                        strokeWidth={1.5}
-                                        style={{
-                                            color: isButtonHovered ? "var(--background)" : "var(--foreground)",
-                                        }}
-                                    />
-                                    <span
-                                        className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base"
-                                        style={{
-                                            color: isButtonHovered ? "var(--background)" : "var(--foreground)",
-                                        }}
-                                    >
-                                        Enter Waitlist
-                                    </span>
-                                    <ArrowUpRight
-                                        className="size-4 transition-all duration-500 sm:size-5"
-                                        strokeWidth={1.5}
-                                        style={{
-                                            color: isButtonHovered ? "var(--background)" : "var(--foreground)",
-                                        }}
-                                    />
-                                </div>
-                                <div
-                                    className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
-                                    style={{
-                                        transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
-                                        opacity: isButtonHovered ? 0 : 0.5,
-                                    }}
-                                />
-                            </button>
+                                    <input type="hidden" name="form-name" value="waitlist" />
+                                    <p className="hidden">
+                                        <label>
+                                            Don’t fill this out: <input name="bot-field" />
+                                        </label>
+                                    </p>
 
-                            <span
-                                className="text-xs tracking-widest uppercase text-muted-foreground/50 transition-all duration-500"
-                                style={{
-                                    transform: showSuccess ? "translateY(0)" : "translateY(10px)",
-                                    opacity: showSuccess ? 1 : 0,
-                                    transitionDelay: "450ms",
-                                }}
-                            >
-                                Limited Spots
-                            </span>
+                                    <div className="relative w-full">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            required
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder="name@work.com"
+                                            className="w-full h-12 bg-transparent border-b border-border text-center text-lg placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground transition-colors"
+                                            disabled={formStatus === 'submitting'}
+                                        />
+                                    </div>
+
+                                    {errorMessage && (
+                                        <p className="text-destructive text-sm" role="alert">{errorMessage}</p>
+                                    )}
+
+                                    <button
+                                        type="submit"
+                                        onMouseEnter={() => setIsButtonHovered(true)}
+                                        onMouseLeave={() => setIsButtonHovered(false)}
+                                        disabled={formStatus === 'submitting'}
+                                        className="group relative flex items-center gap-4 transition-all duration-500 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        <div
+                                            className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
+                                            style={{
+                                                transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
+                                                opacity: isButtonHovered ? 0 : 0.5,
+                                            }}
+                                        />
+                                        <div
+                                            className="relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4"
+                                            style={{
+                                                borderColor: isButtonHovered ? "var(--foreground)" : "var(--border)",
+                                                backgroundColor: isButtonHovered ? "var(--foreground)" : "transparent",
+                                                boxShadow: isButtonHovered ? "0 0 30px rgba(0,0,0,0.1), 0 10px 40px rgba(0,0,0,0.08)" : "none",
+                                            }}
+                                        >
+                                            <Mail
+                                                className="size-4 transition-all duration-500 sm:size-5"
+                                                strokeWidth={1.5}
+                                                style={{
+                                                    color: isButtonHovered ? "var(--background)" : "var(--foreground)",
+                                                }}
+                                            />
+                                            <span
+                                                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base"
+                                                style={{
+                                                    color: isButtonHovered ? "var(--background)" : "var(--foreground)",
+                                                }}
+                                            >
+                                                {formStatus === 'submitting' ? 'Joining...' : 'Enter Waitlist'}
+                                            </span>
+                                            {formStatus !== 'submitting' && (
+                                                <ArrowUpRight
+                                                    className="size-4 transition-all duration-500 sm:size-5"
+                                                    strokeWidth={1.5}
+                                                    style={{
+                                                        color: isButtonHovered ? "var(--background)" : "var(--foreground)",
+                                                    }}
+                                                />
+                                            )}
+                                        </div>
+                                        <div
+                                            className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
+                                            style={{
+                                                transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
+                                                opacity: isButtonHovered ? 0 : 0.5,
+                                            }}
+                                        />
+                                    </button>
+
+                                    <span
+                                        className="text-xs tracking-widest uppercase text-muted-foreground/50"
+                                    >
+                                        Limited Spots
+                                    </span>
+                                </form>
+                            )}
                         </div>
                     )}
                 </div>
