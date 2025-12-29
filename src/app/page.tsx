@@ -27,12 +27,9 @@ export default function Home() {
       </RevealOnScroll>
 
 
-
       <RevealOnScroll delay={0.1} className="snap-start">
         <Agents />
       </RevealOnScroll>
-
-
 
       <RevealOnScroll delay={0.1} className="snap-start">
         <FAQ />

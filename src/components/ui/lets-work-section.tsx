@@ -7,6 +7,7 @@ import { useState } from "react"
 import { ArrowUpRight, Mail, ArrowLeft } from "lucide-react"
 import SlideTextButton from "@/components/kokonutui/slide-text-button"
 import { HeroGeometricBackground } from "@/components/ui/shape-landing-hero"
+import { RideBookingForm } from "@/components/ui/ride-booking-form"
 
 export function LetsWorkTogether() {
     const [isHovered, setIsHovered] = useState(false)
@@ -35,10 +36,14 @@ export function LetsWorkTogether() {
         console.log(`Action: ${mode}`)
     }
 
+    const handleInvestorSearch = (details: any) => {
+        console.log("Investor search:", details)
+    }
+
     return (
         <section id="home" className="flex min-h-screen items-center justify-center px-6 overflow-hidden relative">
             <HeroGeometricBackground />
-            <div className="relative flex flex-col items-center gap-12 w-full max-w-4xl z-10">
+            <div className="relative flex flex-col items-center gap-12 w-full max-w-6xl z-10">
                 {/* Success View (Overlay) */}
                 <div
                     className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -48,111 +53,124 @@ export function LetsWorkTogether() {
                         pointerEvents: showSuccess ? "auto" : "none",
                     }}
                 >
-                    {/* ... Back Arrow ... */}
+                    {/* Back Arrow */}
                     <button
                         onClick={handleBack}
-                        className="absolute -top-24 left-0 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors"
+                        className="absolute top-0 left-0 lg:-left-12 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors"
                         aria-label="Go back"
                     >
                         <ArrowLeft className="size-6" />
                     </button>
 
-                    <div className="flex flex-col items-center gap-2">
-                        <span
-                            className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground transition-all duration-500"
-                            style={{
-                                transform: showSuccess ? "translateY(0)" : "translateY(10px)",
-                                opacity: showSuccess ? 1 : 0,
-                                transitionDelay: "100ms",
-                            }}
-                        >
-                            {mode === 'waitlist' ? 'Automated' : 'Scalable'}
-                        </span>
-                        <h3
-                            className="text-3xl font-light tracking-tight text-foreground transition-all duration-500 sm:text-4xl"
-                            style={{
-                                transform: showSuccess ? "translateY(0)" : "translateY(10px)",
-                                opacity: showSuccess ? 1 : 0,
-                                transitionDelay: "200ms",
-                            }}
-                        >
-                            {mode === 'waitlist' ? 'The Future' : 'Integration'}
-                        </h3>
-                    </div>
-
-                    {/* Success Action Button */}
-                    <button
-                        onClick={handleFinalAction}
-                        onMouseEnter={() => setIsButtonHovered(true)}
-                        onMouseLeave={() => setIsButtonHovered(false)}
-                        className="group relative flex items-center gap-4 transition-all duration-500 cursor-pointer"
-                        style={{
-                            transform: showSuccess
-                                ? isButtonHovered
-                                    ? "translateY(0) scale(1.02)"
-                                    : "translateY(0) scale(1)"
-                                : "translateY(15px) scale(1)",
-                            opacity: showSuccess ? 1 : 0,
-                            transitionDelay: "150ms",
-                        }}
-                    >
-                        <div
-                            className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
-                            style={{
-                                transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
-                                opacity: isButtonHovered ? 0 : 0.5,
-                            }}
-                        />
-                        <div
-                            className="relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4"
-                            style={{
-                                borderColor: isButtonHovered ? "var(--foreground)" : "var(--border)",
-                                backgroundColor: isButtonHovered ? "var(--foreground)" : "transparent",
-                                boxShadow: isButtonHovered ? "0 0 30px rgba(0,0,0,0.1), 0 10px 40px rgba(0,0,0,0.08)" : "none",
-                            }}
-                        >
-                            <Mail
-                                className="size-4 transition-all duration-500 sm:size-5"
-                                strokeWidth={1.5}
-                                style={{
-                                    color: isButtonHovered ? "var(--background)" : "var(--foreground)",
-                                }}
-                            />
-                            <span
-                                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base"
-                                style={{
-                                    color: isButtonHovered ? "var(--background)" : "var(--foreground)",
-                                }}
-                            >
-                                {mode === 'waitlist' ? 'Enter Waitlist' : 'Contact Relations'}
-                            </span>
-                            <ArrowUpRight
-                                className="size-4 transition-all duration-500 sm:size-5"
-                                strokeWidth={1.5}
-                                style={{
-                                    color: isButtonHovered ? "var(--background)" : "var(--foreground)",
-                                }}
+                    {mode === 'investors' ? (
+                        <div className="w-full h-full flex items-center justify-center scale-90 md:scale-100">
+                            <RideBookingForm
+                                imageUrl="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop"
+                                city="San Francisco, CA"
+                                onSearch={handleInvestorSearch}
+                                className="mt-4"
                             />
                         </div>
-                        <div
-                            className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
-                            style={{
-                                transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
-                                opacity: isButtonHovered ? 0 : 0.5,
-                            }}
-                        />
-                    </button>
+                    ) : (
+                        <div className="flex flex-col items-center gap-8">
+                            <div className="flex flex-col items-center gap-2">
+                                <span
+                                    className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground transition-all duration-500"
+                                    style={{
+                                        transform: showSuccess ? "translateY(0)" : "translateY(10px)",
+                                        opacity: showSuccess ? 1 : 0,
+                                        transitionDelay: "100ms",
+                                    }}
+                                >
+                                    Automated
+                                </span>
+                                <h3
+                                    className="text-3xl font-light tracking-tight text-foreground transition-all duration-500 sm:text-4xl"
+                                    style={{
+                                        transform: showSuccess ? "translateY(0)" : "translateY(10px)",
+                                        opacity: showSuccess ? 1 : 0,
+                                        transitionDelay: "200ms",
+                                    }}
+                                >
+                                    The Future
+                                </h3>
+                            </div>
 
-                    <span
-                        className="text-xs tracking-widest uppercase text-muted-foreground/50 transition-all duration-500"
-                        style={{
-                            transform: showSuccess ? "translateY(0)" : "translateY(10px)",
-                            opacity: showSuccess ? 1 : 0,
-                            transitionDelay: "450ms",
-                        }}
-                    >
-                        {mode === 'waitlist' ? 'Limited Spots' : 'Access Deck'}
-                    </span>
+                            {/* Success Action Button */}
+                            <button
+                                onClick={handleFinalAction}
+                                onMouseEnter={() => setIsButtonHovered(true)}
+                                onMouseLeave={() => setIsButtonHovered(false)}
+                                className="group relative flex items-center gap-4 transition-all duration-500 cursor-pointer"
+                                style={{
+                                    transform: showSuccess
+                                        ? isButtonHovered
+                                            ? "translateY(0) scale(1.02)"
+                                            : "translateY(0) scale(1)"
+                                        : "translateY(15px) scale(1)",
+                                    opacity: showSuccess ? 1 : 0,
+                                    transitionDelay: "150ms",
+                                }}
+                            >
+                                <div
+                                    className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
+                                    style={{
+                                        transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
+                                        opacity: isButtonHovered ? 0 : 0.5,
+                                    }}
+                                />
+                                <div
+                                    className="relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4"
+                                    style={{
+                                        borderColor: isButtonHovered ? "var(--foreground)" : "var(--border)",
+                                        backgroundColor: isButtonHovered ? "var(--foreground)" : "transparent",
+                                        boxShadow: isButtonHovered ? "0 0 30px rgba(0,0,0,0.1), 0 10px 40px rgba(0,0,0,0.08)" : "none",
+                                    }}
+                                >
+                                    <Mail
+                                        className="size-4 transition-all duration-500 sm:size-5"
+                                        strokeWidth={1.5}
+                                        style={{
+                                            color: isButtonHovered ? "var(--background)" : "var(--foreground)",
+                                        }}
+                                    />
+                                    <span
+                                        className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base"
+                                        style={{
+                                            color: isButtonHovered ? "var(--background)" : "var(--foreground)",
+                                        }}
+                                    >
+                                        Enter Waitlist
+                                    </span>
+                                    <ArrowUpRight
+                                        className="size-4 transition-all duration-500 sm:size-5"
+                                        strokeWidth={1.5}
+                                        style={{
+                                            color: isButtonHovered ? "var(--background)" : "var(--foreground)",
+                                        }}
+                                    />
+                                </div>
+                                <div
+                                    className="h-px w-8 bg-border transition-all duration-500 sm:w-12"
+                                    style={{
+                                        transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
+                                        opacity: isButtonHovered ? 0 : 0.5,
+                                    }}
+                                />
+                            </button>
+
+                            <span
+                                className="text-xs tracking-widest uppercase text-muted-foreground/50 transition-all duration-500"
+                                style={{
+                                    transform: showSuccess ? "translateY(0)" : "translateY(10px)",
+                                    opacity: showSuccess ? 1 : 0,
+                                    transitionDelay: "450ms",
+                                }}
+                            >
+                                Limited Spots
+                            </span>
+                        </div>
+                    )}
                 </div>
 
                 {/* Initial View - Restoring Template Feel */}
