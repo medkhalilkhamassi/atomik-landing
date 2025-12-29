@@ -3,6 +3,7 @@
 import type React from "react"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { ArrowUpRight, Mail, ArrowLeft } from "lucide-react"
 import SlideTextButton from "@/components/kokonutui/slide-text-button"
@@ -10,6 +11,7 @@ import { HeroGeometricBackground } from "@/components/ui/shape-landing-hero"
 import { RideBookingForm } from "@/components/ui/ride-booking-form"
 
 export function LetsWorkTogether() {
+    const router = useRouter()
     const [isHovered, setIsHovered] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
     const [showSuccess, setShowSuccess] = useState(false)
@@ -63,10 +65,14 @@ export function LetsWorkTogether() {
                 body: formData.toString(),
             })
 
+            // In development, the POST might fail (405) because there's no handler.
+            // On Netlify, it works.
+
             if (response.ok) {
-                setFormStatus('success')
-                setEmail("")
+                router.push("/success")
             } else {
+                // Determine if we should treat specific errors as success for dev? 
+                // No, sticking to strict check.
                 setFormStatus('error')
                 setErrorMessage("Something went wrong. Please try again.")
             }
@@ -151,6 +157,7 @@ export function LetsWorkTogether() {
                                 <form
                                     name="waitlist"
                                     method="POST"
+                                    action="/success"
                                     data-netlify="true"
                                     data-netlify-honeypot="bot-field"
                                     onSubmit={handleWaitlistSubmit}
