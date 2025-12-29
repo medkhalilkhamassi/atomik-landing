@@ -1,15 +1,11 @@
-import SiteHeader from "@/components/SiteHeader";
-import Hero from "@/components/Hero";
-import { LetsWorkTogether } from '@/components/ui/lets-work-section';
-import Manifesto from "@/components/Manifesto";
-
-import Agents from "@/components/Agents";
-
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
-
-import { SideNavigation } from '@/components/ui/side-navigation';
-import { RevealOnScroll } from '@/components/ui/reveal-on-scroll';
+import SiteHeader from "@/components/layout/SiteHeader";
+import { HeroSection } from '@/components/sections/Hero/HeroSection';
+import Manifesto from "@/components/sections/Manifesto/ManifestoSection";
+import Agents from "@/components/sections/Agents/AgentsSection";
+import FAQ from "@/components/sections/FAQ/FAQSection";
+import Footer from "@/components/layout/Footer";
+import { SideNavigation } from '@/components/layout/SideNavigation';
+import { RevealOnScroll } from '@/components/ui/motion/RevealOnScroll';
 
 export default function Home() {
   return (
@@ -19,7 +15,7 @@ export default function Home() {
 
       {/* We Reveal each section as it comes into view */}
       <RevealOnScroll className="snap-start">
-        <LetsWorkTogether />
+        <HeroSection />
       </RevealOnScroll>
 
       <RevealOnScroll delay={0.1} className="snap-start">

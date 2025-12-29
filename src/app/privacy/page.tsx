@@ -1,6 +1,6 @@
 import Link from "next/link";
-import SiteHeader from "@/components/SiteHeader";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/layout/SiteHeader";
+import Footer from "@/components/layout/Footer";
 import { ArrowLeft } from "lucide-react";
 
 export default function PrivacyPage() {

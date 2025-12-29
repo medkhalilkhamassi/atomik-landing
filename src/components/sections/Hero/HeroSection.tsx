@@ -6,12 +6,12 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
 import { ArrowUpRight, Mail, ArrowLeft } from "lucide-react"
-import SlideTextButton from "@/components/kokonutui/slide-text-button"
-import { HeroGeometricBackground } from "@/components/ui/shape-landing-hero"
-import { InvestorContactForm } from "@/components/ui/investor-contact-form"
+import SlideTextButton from "@/components/ui/buttons/SlideTextButton"
+import { HeroGeometricBackground } from "@/components/sections/Hero/HeroGeometricBackground"
+import { InvestorContactForm } from "@/components/forms/InvestorContactForm"
 import { getAttributionFromLocation, type AttributionData } from "@/lib/attribution"
 
-export function LetsWorkTogether() {
+export function HeroSection() {
     const router = useRouter()
     const [isHovered, setIsHovered] = useState(false)
     const [isClicked, setIsClicked] = useState(false)

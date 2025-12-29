@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { ArrowLeft, Check, Copy, CheckCircle2 } from "lucide-react"
-import { HeroGeometricBackground } from "@/components/ui/shape-landing-hero"
+import { HeroGeometricBackground } from "@/components/sections/Hero/HeroGeometricBackground"
 import { useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 

@@ -1,4 +1,4 @@
-import { TestimonialSlider, type Review } from '@/components/ui/testimonial-slider';
+import { TestimonialSlider, type Review } from '@/components/sections/Agents/TestimonialSlider';
 
 export default function Agents() {
     const agents: Review[] = [

@@ -1,6 +1,6 @@
 'use client';
 
-import SpatialProblemShowcase from '@/components/spatial-product-showcase';
+import SpatialProblemShowcase from '@/components/sections/Manifesto/SpatialProblemShowcase';
 
 export default function Manifesto() {
     return (
