@@ -4,6 +4,8 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/primitives/button'
 import React from 'react'
 import { cn } from '@/lib/utils'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
+import { useLocale } from '@/lib/i18n/LocaleContext'
 
 const menuItems = [
     { name: 'The Problem', href: '#manifesto' },
@@ -14,6 +16,7 @@ const menuItems = [
 export default function SiteHeader() {
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
+    const { t } = useLocale()
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -83,7 +86,8 @@ export default function SiteHeader() {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit items-center">
+                                <LanguageSwitcher />
                                 <Button
                                     variant="default"
                                     size="sm"
@@ -93,7 +97,7 @@ export default function SiteHeader() {
                                         // Dispatch event to open waitlist in Hero
                                         window.dispatchEvent(new CustomEvent('open-waitlist'));
                                     }}>
-                                    Join Waitlist
+                                    {t('header.waitlist')}
 
                                 </Button>
                             </div>
@@ -104,3 +108,4 @@ export default function SiteHeader() {
         </header>
     )
 }
+

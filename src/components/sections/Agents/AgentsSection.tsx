@@ -1,52 +1,57 @@
+'use client';
+
 import { TestimonialSlider, type Review } from '@/components/sections/Agents/TestimonialSlider';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 export default function Agents() {
+    const { t } = useLocale();
+
     const agents: Review[] = [
         {
             id: 1,
             name: "Mary",
-            affiliation: "Analyst Agent",
-            quote: "I scan thousands of market signals in seconds so you don't have to guess what features to build.",
+            affiliation: t('agents.analystRole'),
+            quote: t('agents.analystQuote'),
             imageSrc: "/images/mary-v3.png",
             thumbnailSrc: "/images/mary-v3.png",
         },
         {
             id: 2,
             name: "John",
-            affiliation: "Product Manager Agent",
-            quote: "I turn your messy brain dumps into pristine, developer-ready application specs.",
+            affiliation: t('agents.pmRole'),
+            quote: t('agents.pmQuote'),
             imageSrc: "/images/john-v3.png",
             thumbnailSrc: "/images/john-v3.png",
         },
         {
             id: 3,
             name: "Sally",
-            affiliation: "Designer Agent",
-            quote: "I ensure your UI isn't just functional, but pixel-perfect and accessible by default.",
+            affiliation: t('agents.designerRole'),
+            quote: t('agents.designerQuote'),
             imageSrc: "/images/sally-v3.png",
             thumbnailSrc: "/images/sally-v3.png",
         },
         {
             id: 4,
             name: "Winston",
-            affiliation: "DevOps Agent",
-            quote: "I handle the plumbing. CI/CD, infrastructure, and deployment are my playground.",
+            affiliation: t('agents.devopsRole'),
+            quote: t('agents.devopsQuote'),
             imageSrc: "/images/winston-v3.png",
             thumbnailSrc: "/images/winston-v3.png",
         },
         {
             id: 5,
             name: "Murat",
-            affiliation: "QA Agent",
-            quote: "I break things before your users do. If there's a bug, I'll find it.",
+            affiliation: t('agents.qaRole'),
+            quote: t('agents.qaQuote'),
             imageSrc: "/images/murat-v3.png",
             thumbnailSrc: "/images/murat-v3.png",
         },
         {
             id: 6,
             name: "Amelia",
-            affiliation: "Security Agent",
-            quote: "I keep the gates locked. Vulnerabilities don't stand a chance on my watch.",
+            affiliation: t('agents.securityRole'),
+            quote: t('agents.securityQuote'),
             imageSrc: "/images/amelia-v3.png",
             thumbnailSrc: "/images/amelia-v3.png",
         }
@@ -57,10 +62,10 @@ export default function Agents() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                        Meet Your New Workforce
+                        {t('agents.title')}
                     </h2>
                     <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-                        A specialized team of AI agents working in concert to ship your vision.
+                        {t('agents.subtitle')}
                     </p>
                 </div>
 
@@ -69,3 +74,4 @@ export default function Agents() {
         </section>
     );
 }
+

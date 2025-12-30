@@ -2,32 +2,35 @@
 
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 export default function FAQ() {
+    const { t } = useLocale();
+
     const faqs = [
         {
-            question: "What exactly do I get?",
-            answer: "You get production-ready code that passes your specifications and automated tests. It's not a prototype; it's a merged pull request."
+            question: t('faq.q1'),
+            answer: t('faq.a1')
         },
         {
-            question: "How do you prevent bad work?",
-            answer: "We don't rely on reviews. We rely on tests. If the code doesn't pass the provided test suite, the developer doesn't get paid. The system is binary."
+            question: t('faq.q2'),
+            answer: t('faq.a2')
         },
         {
-            question: "What stacks do you support?",
-            answer: "Currently we are optimized for modern web stacks: React, Next.js, Node.js, Python, and TypeScript. More specific constraints can be defined in your specs."
+            question: t('faq.q3'),
+            answer: t('faq.a3')
         },
         {
-            question: "How fast is it?",
-            answer: "Most micro-tasks are claimed within minutes and completed within 12 hours. You can parallelize dozens of tasks to build features overnight."
+            question: t('faq.q4'),
+            answer: t('faq.a4')
         },
         {
-            question: "Who owns the code?",
-            answer: "You do. 100%. Code is work-for-hire and ownership transfers upon payment release from escrow."
+            question: t('faq.q5'),
+            answer: t('faq.a5')
         },
         {
-            question: "How do developer payouts work?",
-            answer: "Payouts are instant upon verified test completion. We handle the escrow and transfer, developers get paid in USD or USDC."
+            question: t('faq.q6'),
+            answer: t('faq.a6')
         }
     ];
 
@@ -35,7 +38,7 @@ export default function FAQ() {
         <section id="faq" className="min-h-screen flex items-center justify-center bg-background py-24">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 w-full">
                 <h2 className="text-3xl font-bold tracking-tight text-foreground mb-16 text-center">
-                    Frequently Asked Questions
+                    {t('faq.title')}
                 </h2>
 
                 <div className="space-y-6">
@@ -72,3 +75,4 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
         </div>
     );
 }
+

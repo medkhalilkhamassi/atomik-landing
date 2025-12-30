@@ -1,7 +1,5 @@
 "use client"
 
-
-
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
@@ -10,9 +8,11 @@ import SlideTextButton from "@/components/ui/buttons/SlideTextButton"
 import { HeroGeometricBackground } from "@/components/sections/Hero/HeroGeometricBackground"
 import { InvestorContactForm } from "@/components/forms/InvestorContactForm"
 import { getAttributionFromLocation, type AttributionData } from "@/lib/attribution"
+import { useLocale } from "@/lib/i18n/LocaleContext"
 
 export function HeroSection() {
     const router = useRouter()
+    const { t } = useLocale()
     const [isHovered, setIsHovered] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
     const [showSuccess, setShowSuccess] = useState(false)
@@ -165,7 +165,7 @@ export function HeroSection() {
                                         transitionDelay: "100ms",
                                     }}
                                 >
-                                    Join
+                                    {t('hero.join')}
                                 </span>
                                 <h3
                                     className="text-3xl font-light tracking-tight text-foreground transition-all duration-500 sm:text-4xl"
@@ -175,15 +175,15 @@ export function HeroSection() {
                                         transitionDelay: "200ms",
                                     }}
                                 >
-                                    The Future
+                                    {t('hero.theFuture')}
                                 </h3>
                             </div>
 
                             {/* Waitlist Form */}
                             {formStatus === 'success' ? (
                                 <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-                                    <h3 className="text-2xl font-light text-foreground mb-4">You're on the list.</h3>
-                                    <p className="text-muted-foreground mb-6">Check your inbox for updates.</p>
+                                    <h3 className="text-2xl font-light text-foreground mb-4">{t('hero.youreOnList')}</h3>
+                                    <p className="text-muted-foreground mb-6">{t('hero.checkInbox')}</p>
                                     <button
                                         onClick={() => {
                                             navigator.clipboard.writeText("https://atomik.dev");
@@ -191,7 +191,7 @@ export function HeroSection() {
                                         }}
                                         className="text-sm font-medium text-primary hover:text-primary/80 transition-colors cursor-pointer"
                                     >
-                                        Share Atomik
+                                        {t('hero.shareAtomik')}
                                     </button>
                                 </div>
                             ) : (
@@ -279,7 +279,7 @@ export function HeroSection() {
                                                     color: isButtonHovered ? "var(--background)" : "var(--foreground)",
                                                 }}
                                             >
-                                                {formStatus === 'submitting' ? 'Joining...' : 'Enter Waitlist'}
+                                                {formStatus === 'submitting' ? t('hero.joining') : t('hero.enterWaitlist')}
                                             </span>
                                             {formStatus !== 'submitting' && (
                                                 <ArrowUpRight
@@ -303,7 +303,7 @@ export function HeroSection() {
                                     <span
                                         className="text-xs tracking-widest uppercase text-muted-foreground/50"
                                     >
-                                        Limited Spots
+                                        {t('hero.limitedSpots')}
                                     </span>
                                 </form>
                             )}
@@ -326,7 +326,7 @@ export function HeroSection() {
                         <span className="relative inline-flex size-2 rounded-full bg-red-500" />
                     </span>
                     <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
-                        CLOSED ALPHA
+                        {t('hero.badge')}
                     </span>
                 </div>
 
@@ -352,7 +352,7 @@ export function HeroSection() {
                                     className="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
                                     style={{ transform: isHovered && !isClicked ? "translateY(-10px)" : "translateY(0)" }}
                                 >
-                                    Ship real software
+                                    {t('hero.title1')}
                                 </span>
                             </span>
                             <span className="block overflow-hidden pb-4 -mt-2">
@@ -360,7 +360,7 @@ export function HeroSection() {
                                     className="block text-muted-foreground/60 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-75 will-change-transform"
                                     style={{ transform: isHovered && !isClicked ? "translateY(-10px)" : "translateY(0)" }}
                                 >
-                                    without the friction.
+                                    {t('hero.title2')}
                                 </span>
                             </span>
                         </h2>
@@ -397,8 +397,8 @@ export function HeroSection() {
                     >
                         <div className="flex flex-col sm:flex-row items-center gap-4 cursor-default">
                             <SlideTextButton
-                                text="Join Waitlist"
-                                hoverText="Get Early Access"
+                                text={t('hero.joinWaitlist')}
+                                hoverText={t('hero.getEarlyAccess')}
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault()
@@ -409,8 +409,8 @@ export function HeroSection() {
                                 className="bg-primary text-primary-foreground hover:bg-primary/90 min-w-[240px] cursor-pointer"
                             />
                             <SlideTextButton
-                                text="Investors"
-                                hoverText="Let's Connect"
+                                text={t('hero.investors')}
+                                hoverText={t('hero.letsConnect')}
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault()
@@ -434,7 +434,7 @@ export function HeroSection() {
                     }}
                 >
                     <p className="max-w-3xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-                        Atomik turns ideas into scoped, test-verified tasks and delivers production-ready code through vetted developers — faster, safer, and fully auditable.
+                        {t('hero.description')}
                     </p>
                     {/* <span className="text-xs tracking-widest uppercase text-muted-foreground/60">hello@atomik.dev</span> */}
                 </div>

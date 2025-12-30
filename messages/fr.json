@@ -1,0 +1,74 @@
+{
+    "hero": {
+        "badge": "ALPHA FERMÉE",
+        "title1": "Livrez du vrai logiciel",
+        "title2": "sans friction.",
+        "description": "Atomik transforme vos idées en tâches définies par des tests et livre du code prêt pour la production via des développeurs vérifiés — plus rapide, plus sûr et entièrement auditable.",
+        "joinWaitlist": "Rejoindre la liste",
+        "getEarlyAccess": "Accès anticipé",
+        "investors": "Investisseurs",
+        "letsConnect": "Connectons-nous",
+        "enterWaitlist": "S'inscrire",
+        "joining": "Inscription...",
+        "limitedSpots": "Places limitées",
+        "join": "Rejoindre",
+        "theFuture": "Le Futur",
+        "youreOnList": "Vous êtes inscrit.",
+        "checkInbox": "Consultez votre boîte mail pour les mises à jour.",
+        "shareAtomik": "Partager Atomik"
+    },
+    "agents": {
+        "title": "Rencontrez Votre Nouvelle Équipe",
+        "subtitle": "Une équipe spécialisée d'agents IA travaillant ensemble pour concrétiser votre vision.",
+        "analystRole": "Agent Analyste",
+        "analystQuote": "J'analyse des milliers de signaux du marché en quelques secondes pour que vous n'ayez pas à deviner quelles fonctionnalités construire.",
+        "pmRole": "Agent Chef de Projet",
+        "pmQuote": "Je transforme vos idées brutes en spécifications d'application impeccables et prêtes pour les développeurs.",
+        "designerRole": "Agent Designer",
+        "designerQuote": "Je m'assure que votre interface n'est pas seulement fonctionnelle, mais parfaite au pixel près et accessible par défaut.",
+        "devopsRole": "Agent DevOps",
+        "devopsQuote": "Je gère la plomberie. CI/CD, infrastructure et déploiement sont mon terrain de jeu.",
+        "qaRole": "Agent QA",
+        "qaQuote": "Je casse les choses avant vos utilisateurs. S'il y a un bug, je le trouverai.",
+        "securityRole": "Agent Sécurité",
+        "securityQuote": "Je garde les portes verrouillées. Les vulnérabilités n'ont aucune chance sous ma surveillance."
+    },
+    "faq": {
+        "title": "Questions Fréquentes",
+        "q1": "Qu'est-ce que j'obtiens exactement ?",
+        "a1": "Vous obtenez du code prêt pour la production qui passe vos spécifications et tests automatisés. Ce n'est pas un prototype ; c'est une pull request fusionnée.",
+        "q2": "Comment évitez-vous le mauvais travail ?",
+        "a2": "Nous ne comptons pas sur les revues. Nous comptons sur les tests. Si le code ne passe pas la suite de tests fournie, le développeur n'est pas payé. Le système est binaire.",
+        "q3": "Quelles stacks supportez-vous ?",
+        "a3": "Actuellement, nous sommes optimisés pour les stacks web modernes : React, Next.js, Node.js, Python et TypeScript. Des contraintes plus spécifiques peuvent être définies dans vos specs.",
+        "q4": "C'est rapide ?",
+        "a4": "La plupart des micro-tâches sont réclamées en quelques minutes et terminées en 12 heures. Vous pouvez paralléliser des dizaines de tâches pour construire des fonctionnalités pendant la nuit.",
+        "q5": "À qui appartient le code ?",
+        "a5": "À vous. 100%. Le code est un travail sur commande et la propriété est transférée lors de la libération du paiement du séquestre.",
+        "q6": "Comment fonctionnent les paiements des développeurs ?",
+        "a6": "Les paiements sont instantanés après vérification de la réussite des tests. Nous gérons le séquestre et le transfert, les développeurs sont payés en USD ou USDC."
+    },
+    "footer": {
+        "tagline": "Specs In → Code Out.",
+        "deck": "Deck (sur demande)",
+        "privacy": "Confidentialité",
+        "terms": "Conditions",
+        "copyright": "© 2025 Atomik Inc. Tous droits réservés."
+    },
+    "header": {
+        "waitlist": "Rejoindre"
+    },
+    "investor": {
+        "title": "Prêt à investir ?",
+        "subtitle": "Accédez à nos documents investisseurs",
+        "requestDeck": "Demander le Deck",
+        "bookIntro": "Réserver un appel",
+        "name": "Nom",
+        "email": "Email",
+        "company": "Entreprise",
+        "role": "Fonction",
+        "message": "Message (optionnel)",
+        "submit": "Envoyer",
+        "submitting": "Envoi..."
+    }
+}
