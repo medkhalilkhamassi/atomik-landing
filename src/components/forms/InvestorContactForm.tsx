@@ -154,10 +154,6 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
 
                         <motion.form
                             name="investor-contact"
-                            method="POST"
-                            data-netlify="true"
-                            data-netlify-honeypot="bot-field"
-                            action="/success?type=investor"
                             onSubmit={handleSubmit}
                             className="space-y-8 flex-1 flex flex-col"
                             variants={itemVariants}

@@ -122,51 +122,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${inter.variable} antialiased`}
-      >
-        {/* 
-            Netlify Form Detection Helpers 
-            These must be statically present in the HTML export for Netlify to detect them.
-            Actual submission happens via React/fetch, but these hidden forms register the handlers.
-        */}
-        <form name="waitlist" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-          <input type="text" name="email" />
-          <input type="text" name="role" />
-          <input type="text" name="name" />
-          <input type="text" name="company" />
-          {/* Analytics Fields */}
-          <input type="hidden" name="utm_source" />
-          <input type="hidden" name="utm_medium" />
-          <input type="hidden" name="utm_campaign" />
-          <input type="hidden" name="utm_term" />
-          <input type="hidden" name="utm_content" />
-          <input type="hidden" name="referrer" />
-          <input type="hidden" name="landing_path" />
-          <input type="hidden" name="cta_source" />
-          <input type="hidden" name="submitted_at" />
-          <input name="bot-field" />
-        </form>
-
-        <form name="investor-contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-          <input type="text" name="firstName" />
-          <input type="text" name="lastName" />
-          <input type="email" name="email" />
-          <input type="text" name="company" />
-          <input type="text" name="position" />
-          {/* Analytics Fields */}
-          <input type="hidden" name="utm_source" />
-          <input type="hidden" name="utm_medium" />
-          <input type="hidden" name="utm_campaign" />
-          <input type="hidden" name="utm_term" />
-          <input type="hidden" name="utm_content" />
-          <input type="hidden" name="referrer" />
-          <input type="hidden" name="landing_path" />
-          <input type="hidden" name="cta_source" />
-          <input type="hidden" name="submitted_at" />
-          <input name="bot-field" />
-        </form>
-
+      <body className={`${inter.variable} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -178,4 +134,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 

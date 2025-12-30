@@ -198,10 +198,6 @@ export function HeroSection() {
                             ) : (
                                 <form
                                     name="waitlist"
-                                    method="POST"
-                                    action="/success"
-                                    data-netlify="true"
-                                    data-netlify-honeypot="bot-field"
                                     onSubmit={handleWaitlistSubmit}
                                     className="relative flex flex-col items-center gap-6 w-full max-w-sm"
                                     style={{
