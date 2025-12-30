@@ -55,7 +55,7 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
             }
 
             try {
-                const formData = new URLSearchParams();
+                const formData = new FormData();
                 formData.append("form-name", "investor-contact");
                 formData.append("firstName", firstName);
                 formData.append("lastName", lastName);
