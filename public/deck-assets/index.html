@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomik | Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/deck-assets/styles.css">
+    <link rel="icon" href="/favicon.ico" />
+</head>
+
+<body>
+
+    <!-- Navigation & Header -->
+    <header class="deck-header">
+        <div class="logo">Atomik</div>
+
+        <div class="header-actions">
+            <a href="https://calendly.com/khamassimohamedkhalil/new-meeting" target="_blank"
+                class="btn btn-secondary">Book Intro</a>
+            <span id="slide-indicator">01 / 20</span>
+        </div>
+    </header>
+
+    <!-- Main Slides Container -->
+    <main class="slides-container">
+
+        <!-- Slide 1: Introduction -->
+        <section id="intro" class="slide">
+            <div class="slide-content">
+                <div class="col-left">
+                    <h1 class="reveal">Atomik</h1>
+                    <p class="lead reveal">
+                        Software projects don’t fail because developers are bad
+                        they fail because delivery isn’t measurable.
+                    </p>
+                    <div class="sub-lead reveal" style="margin-top: 0.5rem; line-height: 1.6;">
+                        Atomik turns features into test-defined, escrow-backed micro-tasks
+                        so founders get predictable delivery, and developers get instant payouts.
+                    </div>
+                </div>
+                <div class="col-right hero-visual">
+                    <div class="spatial-orb"></div>
+                    <div class="reveal">
+                        <img src="/deck-assets/assets/logo.svg" alt="Atomik Logo" class="hero-logo-right">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Problem (Founders) -->
+        <section id="problem-founders" class="slide">
+            <div class="slide-content">
+                <div class="col-left">
+                    <h2 class="reveal">The Problem: For Founders</h2>
+                    <p class="reveal"
+                        style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-color); opacity: 0.9;">
+                        Building software today is a negotiation — not a delivery pipeline.
+                    </p>
+                    <ul class="problem-list reveal" style="margin-bottom: 1.5rem;">
+                        <li><strong>Ambiguous specs → endless change requests</strong><br>Projects routinely stretch
+                            30–50% over budget.</li>
+                        <li><strong>Subjective reviews → endless revisions</strong><br>First-submission failure rates
+                            are 60–70%.</li>
+                        <li><strong>Security risk</strong><br>Contractors get access to sensitive repos — and it’s
+                            impossible to track leaks.</li>
+                        <li><strong>Payment friction</strong><br>Marketplaces, escrow, disputes, and coordination chew
+                            up 40–60% of cost.</li>
+                    </ul>
+                    <div class="problem-stat-box reveal">A $10k feature quietly becomes $18k — and ships months late.
+                    </div>
+                </div>
+                <div class="col-right">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop&crop=face"
+                        alt="Frustrated founder" class="problem-image reveal">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Problem (Developers) -->
+        <section id="problem-developers" class="slide">
+            <div class="slide-content">
+                <div class="col-left visual-center">
+                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=600&h=800&fit=crop"
+                        alt="Stressed developer" class="problem-image reveal">
+                </div>
+                <div class="col-right">
+                    <div class="problem-text-block">
+                        <h2 class="reveal">The Problem: For Developers</h2>
+                        <ul class="problem-list reveal" style="margin-bottom: 1.5rem;">
+                            <li><strong>Proposal roulette:</strong> 98% of proposals never get read.</li>
+                            <li><strong>Spec chaos:</strong> unclear requirements create payment disputes.</li>
+                            <li><strong>Environment waste:</strong> 20–30% of time burned on setup.</li>
+                            <li><strong>Subjective reviews:</strong> low-skill developers game the system.</li>
+                        </ul>
+                        <div class="problem-stat-box reveal">The result: great developers earn below market — while
+                            mediocre work still gets paid.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: The Engine (AI Agents) -->
+        <section id="engine" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">The Engine: AI Agent Pipeline</h2>
+                <p class="reveal"
+                    style="margin-bottom: 2rem; color: var(--text-color); opacity: 0.9; font-size: 1.2rem;">
+                    The system turns vague founder intent into machine-checkable tasks — every time.
+                </p>
+                <div class="agent-workflow reveal">
+                    <div class="agent-card">
+                        <div class="agent-icon">📊</div>
+                        <h3>Analyst</h3>
+                        <p>Market research & requirements</p>
+                    </div>
+                    <div class="agent-arrow">→</div>
+                    <div class="agent-card">
+                        <div class="agent-icon">🏗️</div>
+                        <h3>Architect</h3>
+                        <p>System design & APIs</p>
+                    </div>
+                    <div class="agent-arrow">→</div>
+                    <div class="agent-card">
+                        <div class="agent-icon">📋</div>
+                        <h3>PM</h3>
+                        <p>Task breakdown & specs</p>
+                    </div>
+                    <div class="agent-arrow">→</div>
+                    <div class="agent-card">
+                        <div class="agent-icon">✅</div>
+                        <h3>QA</h3>
+                        <p>Acceptance criteria & tests</p>
+                    </div>
+                </div>
+                <p class="problem-stat reveal" style="margin-top: 2rem;">Outcome: predictable scope, testable acceptance
+                    criteria, zero ambiguity.</p>
+            </div>
+        </section>
+
+        <!-- Slide 5: The Developer Experience -->
+        <section id="developer-workflow" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">The Developer Experience</h2>
+                <p class="reveal"
+                    style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-color); opacity: 0.9;">
+                    Developers don’t “apply for jobs.” They pick tasks, ship, get paid.
+                </p>
+                <div class="workspace-features reveal">
+                    <div class="ws-feature">
+                        <div class="ws-icon">🔍</div>
+                        <h3>Browse</h3>
+                        <p>Filter atomic tasks by stack & price</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">⚡</div>
+                        <h3>Claim</h3>
+                        <p>No proposals. Instant access.</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">💻</div>
+                        <h3>Build</h3>
+                        <p>Pre-configured cloud IDE</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">💸</div>
+                        <h3>Earn</h3>
+                        <p>Tests pass = Instant payout</p>
+                    </div>
+                </div>
+                <p class="problem-stat reveal" style="margin-top: 2rem;">Zero proposals. Zero negotiation. Zero
+                    guesswork.</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Atomic Tasks -->
+        <section id="atomic-tasks" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">Atomic Tasks</h2>
+                <div class="workspace-features reveal">
+                    <div class="ws-feature">
+                        <div class="ws-icon">⏳</div>
+                        <h3>2-4 Hour Scope</h3>
+                        <p>Clear start and end point</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">🏷️</div>
+                        <h3>Fixed Price</h3>
+                        <p>No bidding wars or negotiations</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">📏</div>
+                        <h3>Rigid Specs</h3>
+                        <p>AI-generated acceptance criteria</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">🚀</div>
+                        <h3>Instant Claim</h3>
+                        <p>Developers claim, not pitch</p>
+                    </div>
+                </div>
+                <p class="problem-stat reveal">What used to take 6 weeks becomes six days —<br>because every task is
+                    scoped, tested, and payable on pass.</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Secure Workspace -->
+        <section id="workspace" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">Secure Ephemeral Workspace</h2>
+                <div class="workspace-features reveal">
+                    <div class="ws-feature">
+                        <div class="ws-icon">🔒</div>
+                        <h3>Isolated Environment</h3>
+                        <p>No access to full codebase</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">☁️</div>
+                        <h3>Cloud-Based</h3>
+                        <p>Pre-configured, instant setup</p>
+                    </div>
+                    <div class="ws-feature">
+                        <div class="ws-icon">⏱️</div>
+                        <h3>Ephemeral</h3>
+                        <p>Auto-destroyed after merge</p>
+                    </div>
+                </div>
+                <p class="problem-stat reveal" style="margin-top: 2rem;">Code never leaves the sandbox.<br>Founders keep
+                    IP. Developers get clean environments. Everyone wins.</p>
+            </div>
+        </section>
+
+        <!-- Slide 7: Verification & Escrow -->
+        <section id="verification" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">Binary Verification</h2>
+                <p class="reveal"
+                    style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-color); opacity: 0.9;">
+                    Subjective reviews cause arguments.<br>Automated tests cause payments.
+                </p>
+                <div class="verification-flow reveal">
+                    <div class="verify-step">
+                        <div class="verify-num">1</div>
+                        <p>Developer submits PR</p>
+                    </div>
+                    <div class="verify-arrow">→</div>
+                    <div class="verify-step">
+                        <div class="verify-num">2</div>
+                        <p>CI runs pre-defined tests</p>
+                    </div>
+                    <div class="verify-arrow">→</div>
+                    <div class="verify-step">
+                        <div class="verify-num">3</div>
+                        <p>Tests pass = "Done"</p>
+                    </div>
+                    <div class="verify-arrow">→</div>
+                    <div class="verify-step done">
+                        <div class="verify-num">💰</div>
+                        <p>Escrow auto-releases</p>
+                    </div>
+                </div>
+                <p class="problem-stat reveal" style="margin-top: 2rem;">No opinions. No arguments. <br> Tests pass →
+                    money moves.</p>
+            </div>
+        </section>
+
+        <!-- Slide 8: Why It Works (Summary) -->
+        <section id="why-it-works" class="slide">
+            <div class="slide-content">
+                <div class="col-left">
+                    <h2 class="reveal">Why It Works</h2>
+                    <ul class="advantage-list reveal" style="margin-top: 2rem;">
+                        <li style="margin-bottom: 1.5rem;"><strong>Precision:</strong> AI Agents define exactly what
+                            "Done" means.</li>
+                        <li style="margin-bottom: 1.5rem;"><strong>Speed:</strong> Developers stop bidding and start
+                            building.</li>
+                        <li style="margin-bottom: 1.5rem;"><strong>Security:</strong> Work happens in sandboxes, not
+                            local laptops.</li>
+                        <li style="margin-bottom: 1.5rem;"><strong>Certainty:</strong> Payment is code-triggered, not
+                            human-negotiated.</li>
+                    </ul>
+                    <p class="reveal"
+                        style="margin-top: 2rem; border-left: 4px solid var(--primary-color); padding-left: 1rem; font-style: italic; color: var(--text-color);">
+                        The friction of "trust" is replaced by the certainty of code.
+                    </p>
+                </div>
+                <div class="col-right visual-grid">
+                    <div class="service-card reveal">Spec</div>
+                    <div class="service-card reveal">Build</div>
+                    <div class="service-card reveal">Verify</div>
+                    <div class="service-card reveal">Pay</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Market (Text) -->
+        <section id="market" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">Total Addressable Market</h2>
+                <div class="stat-grid reveal"
+                    style="display:flex; justify-content:center; gap:60px; margin-bottom:40px;">
+                    <div class="stat-block" style="margin-bottom:0;">
+                        <span class="number">$535B</span>
+                        <span class="label">SW Outsourcing</span>
+                    </div>
+                    <div class="stat-block" style="margin-bottom:0;">
+                        <span class="number">$26B</span>
+                        <span class="label">AI Code Tools</span>
+                    </div>
+                </div>
+                <p class="note reveal"><strong>TAM:</strong> ~$587B across 5 interconnecting segments.</p>
+                <p class="reveal" style="color:#666; margin-top: 20px;">Beachhead: Founder/Startup Cohort</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Market Visual -->
+        <section id="market-visual" class="slide">
+            <div class="slide-content single-col center-content">
+                <div class="image-container reveal">
+                    <img src="/deck-assets/assets/comp-matrix.png" alt="Competitive Landscape Matrix"
+                        class="deck-image-large">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Competition (Text) -->
+        <section id="competition" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">Competition</h2>
+                <p class="reveal"
+                    style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-color); opacity: 0.9;">
+                    Competitors optimize pieces of the pipeline.<br>Atomik integrates the whole loop.
+                </p>
+                <div class="competitor-split reveal">
+                    <div class="comp-col">
+                        <h3>Direct</h3>
+                        <p>Upwork, Fiverr, Toptal, Arc</p>
+                    </div>
+                    <div class="comp-col">
+                        <h3>Indirect</h3>
+                        <p>GitHub Codespaces, Jira, Copilot</p>
+                    </div>
+                </div>
+                <p class="reveal" style="max-width: 600px; margin-top:20px; margin-left:auto; margin-right:auto;">
+                    No incumbent integrates all five layers: Specification + Task + Secure Execution + Verification +
+                    Payment.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 8: Competition Visual -->
+        <section id="competition-visual" class="slide">
+            <div class="slide-content single-col center-content">
+                <div class="matrix-container reveal">
+                    <img src="/deck-assets/assets/market-tam.png" alt="TAM Growth Chart" class="deck-image-large">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Advantages -->
+        <section id="advantages" class="slide">
+            <div class="slide-content">
+                <div class="col-left">
+                    <h2 class="reveal">Key Advantages</h2>
+                    <ul class="advantage-list reveal">
+                        <li><strong>Secure Execution:</strong> Workspace isolation prevents IP leakage.</li>
+                        <li><strong>Test-Defined Tasks:</strong> "Done" is binary, not subjective.</li>
+                        <li><strong>Objective Escrow:</strong> Rules based on passing tests.</li>
+                        <li><strong>Faster Cycle:</strong> Claim tasks instantly, no proposals.</li>
+                        <li><strong>Reputation:</strong> Based on verifiable code outcomes.</li>
+                    </ul>
+                </div>
+                <div class="col-right center-visual">
+                    <div class="shield-icon reveal">
+                        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Slide 11: Revenue -->
+        <section id="revenue" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">Revenue Model</h2>
+                <div class="pricing-grid reveal">
+                    <!-- Card 1: Commission -->
+                    <div class="pricing-card">
+                        <div class="price-header">Marketplace</div>
+                        <div class="price-large">15%</div>
+                        <div class="price-sub">Commission</div>
+                        <ul class="price-features">
+                            <li>Applied to every task value</li>
+                            <li>Paid by the Founder</li>
+                            <li>Includes escrow & dispute resolution</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2: Subscription -->
+                    <div class="pricing-card highlight">
+                        <div class="price-header">Pro Subscription</div>
+                        <div class="price-large">$20<span class="period">/mo</span></div>
+                        <div class="price-sub">Per User</div>
+                        <ul class="price-features">
+                            <li><strong>Founders:</strong> Advanced analytics & API</li>
+                            <li><strong>Developers:</strong> Profile boost & lower fees</li>
+                            <li>Recurring SaaS Revenue</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 3: Enterprise -->
+                    <div class="pricing-card">
+                        <div class="price-header">Enterprise</div>
+                        <div class="price-large">Custom</div>
+                        <div class="price-sub">Annual Contracts</div>
+                        <ul class="price-features">
+                            <li>Private Marketplace</li>
+                            <li>Custom SLA & Support</li>
+                            <li>On-premise / VPC Options</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: Roadmap -->
+        <section id="roadmap" class="slide">
+            <div class="slide-content single-col center-content">
+                <h2 class="reveal">Roadmap</h2>
+                <div class="roadmap-horizontal reveal">
+                    <div class="h-line"></div>
+                    <div class="h-step">
+                        <div class="h-dot"></div>
+                        <div class="h-content">
+                            <div class="h-phase">Phase 1</div>
+                            <div class="h-title">Closed Alpha</div>
+                            <div class="h-desc">Prove loop end-to-end.</div>
+                        </div>
+                    </div>
+                    <div class="h-step">
+                        <div class="h-dot"></div>
+                        <div class="h-content">
+                            <div class="h-phase">Phase 2</div>
+                            <div class="h-title">Beta</div>
+                            <div class="h-desc">Increase volume + liquidity.</div>
+                        </div>
+                    </div>
+                    <div class="h-step">
+                        <div class="h-dot"></div>
+                        <div class="h-content">
+                            <div class="h-phase">Phase 3</div>
+                            <div class="h-title">Paid Pilots</div>
+                            <div class="h-desc">Live payments + automation hardening.</div>
+                        </div>
+                    </div>
+                    <div class="h-step">
+                        <div class="h-dot"></div>
+                        <div class="h-content">
+                            <div class="h-phase">Phase 4</div>
+                            <div class="h-title">Expansion</div>
+                            <div class="h-desc">Agencies, Mid-market, Enterprise.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Slide 14: Team -->
+        <section id="team" class="slide">
+            <div class="slide-content single-col">
+                <h2 class="reveal">Meet the Team</h2>
+                <div class="team-grid reveal">
+                    <div class="team-placeholder">
+                        <div class="avatar"></div>
+                        <h3>Founder Name</h3>
+                        <p>Role / Background</p>
+                    </div>
+                    <div class="team-placeholder">
+                        <div class="avatar"></div>
+                        <h3>Co-Founder Name</h3>
+                        <p>Role / Background</p>
+                    </div>
+                    <div class="team-placeholder">
+                        <div class="avatar"></div>
+                        <h3>Key Hire</h3>
+                        <p>Role / Background</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 15: Thank You -->
+        <section id="thanks" class="slide">
+            <div class="slide-content single-col center-content">
+                <h1 class="reveal">Atomik</h1>
+                <p class="subtitle reveal">Verified software delivery—task by task.</p>
+                <div class="cta-group reveal">
+                    <button class="btn btn-primary">Join Waitlist</button>
+                    <a href="https://calendly.com/khamassimohamedkhalil/new-meeting" target="_blank"
+                        class="btn btn-secondary">Book Intro</a>
+                </div>
+                <div class="contact-info reveal">
+                    <p>khamassimohamedkhalil@gmail.com</p>
+                </div>
+                <div class="footer reveal">
+                    &copy; 2026 Atomik Inc.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Side Navigation Dots -->
+    <div class="nav-dots" id="nav-dots">
+        <!-- Generated by JS -->
+    </div>
+
+    <!-- Floating Navigation Arrows -->
+    <div class="nav-arrows">
+        <button id="btn-up" aria-label="Previous Slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </button>
+        <button id="btn-down" aria-label="Next Slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6" />
+            </svg>
+        </button>
+    </div>
+
+    <script src="/deck-assets/app.js"></script>
+</body>
+
+</html>

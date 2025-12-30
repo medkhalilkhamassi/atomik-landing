@@ -98,10 +98,11 @@ export function HeroSection() {
             if (attribution.referrer) formData.append("referrer", attribution.referrer)
             if (attribution.landing_path) formData.append("landing_path", attribution.landing_path)
 
-            const response = await fetch("/", {
+            console.log("Submitting Waitlist:", Object.fromEntries(formData));
+
+            const response = await fetch("/api/submit-to-sheet", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: formData.toString(),
+                body: formData,
             })
 
             // In development, the POST might fail (405) because there's no handler.

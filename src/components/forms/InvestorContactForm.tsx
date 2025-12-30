@@ -74,10 +74,9 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
                 if (attribution.referrer) formData.append("referrer", attribution.referrer);
                 if (attribution.landing_path) formData.append("landing_path", attribution.landing_path);
 
-                const response = await fetch("/success?type=investor", {
+                const response = await fetch("/api/submit-to-sheet", {
                     method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: formData.toString(),
+                    body: formData,
                 });
 
                 if (response.ok) {
@@ -95,10 +94,7 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
             }
         };
 
-        const handleBookIntro = () => {
-            trackEvent('investor_book_intro_click');
-            window.location.href = "mailto:hello@atomik.dev?subject=Investor%20Intro%20-%20Atomik";
-        };
+
 
         const focusForm = () => {
             if (firstNameRef.current) {
@@ -350,13 +346,16 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
                             </div>
 
                             <div className="mt-auto pt-8 flex justify-start">
-                                <button
-                                    onClick={handleBookIntro}
+                                <a
+                                    href="https://calendly.com/khamassimohamedkhalil/new-meeting"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => trackEvent('investor_book_intro_click')}
                                     className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-14 px-10 gap-2"
                                 >
                                     <span>Book Intro</span>
                                     <ArrowRight className="size-4" />
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </motion.div>
