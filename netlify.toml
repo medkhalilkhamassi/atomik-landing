@@ -1,12 +1,10 @@
 [build]
-  command = "npm run build && cp -r public/deck-assets out/deck-assets"
-  publish = "out"
+  command = "npm run build"
+  publish = ".next"
 
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[edge_functions]]
   path = "/deck"
   function = "protect-deck"
-
