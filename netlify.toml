@@ -2,6 +2,11 @@
   command = "npm run build && cp -r public/deck-assets out/deck-assets"
   publish = "out"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [[edge_functions]]
   path = "/deck"
   function = "protect-deck"
+
