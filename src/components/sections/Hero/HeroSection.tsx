@@ -83,7 +83,7 @@ export function HeroSection() {
         setErrorMessage("")
 
         try {
-            const formData = new URLSearchParams()
+            const formData = new FormData()
             formData.append("form-name", "waitlist")
             formData.append("email", email)
 
@@ -98,8 +98,9 @@ export function HeroSection() {
             if (attribution.referrer) formData.append("referrer", attribution.referrer)
             if (attribution.landing_path) formData.append("landing_path", attribution.landing_path)
 
-            console.log("Submitting Waitlist:", Object.fromEntries(formData));
+            console.log("Submitting Waitlist to Google Sheets");
 
+            // Submit to Netlify Function → Google Sheets
             const response = await fetch("/api/submit-to-sheet", {
                 method: "POST",
                 body: formData,
