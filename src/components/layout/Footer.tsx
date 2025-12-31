@@ -1,7 +1,14 @@
 'use client';
 
-import Link from 'next/link';
 import { useLocale } from '@/lib/i18n/LocaleContext';
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogTitle,
+    DialogDescription,
+} from '@/components/ui/primitives/dialog';
+import { PrivacyContent, TermsContent } from './LegalContent';
 
 export default function Footer() {
     const { t } = useLocale();
@@ -21,13 +28,36 @@ export default function Footer() {
                     <span title="Coming Soon" className="cursor-not-allowed opacity-50">LinkedIn</span>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm text-muted-foreground">
-                    <a href="mailto:hello@atomik.dev" className="hover:text-primary transition-colors">hello@atomik.dev</a>
+                <div className="flex gap-4 text-sm text-muted-foreground">
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <button className="hover:text-foreground transition-colors cursor-pointer">
+                                {t('footer.privacy')}
+                            </button>
+                        </DialogTrigger>
+                        <DialogContent>
+                            <DialogTitle className="sr-only">{t('footer.privacy')}</DialogTitle>
+                            <DialogDescription className="sr-only">
+                                Privacy policy for Atomik
+                            </DialogDescription>
+                            <PrivacyContent />
+                        </DialogContent>
+                    </Dialog>
 
-                    <div className="flex gap-4">
-                        <Link href="/privacy" className="hover:text-foreground transition-colors">{t('footer.privacy')}</Link>
-                        <Link href="/terms" className="hover:text-foreground transition-colors">{t('footer.terms')}</Link>
-                    </div>
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <button className="hover:text-foreground transition-colors cursor-pointer">
+                                {t('footer.terms')}
+                            </button>
+                        </DialogTrigger>
+                        <DialogContent>
+                            <DialogTitle className="sr-only">{t('footer.terms')}</DialogTitle>
+                            <DialogDescription className="sr-only">
+                                Terms of service for Atomik
+                            </DialogDescription>
+                            <TermsContent />
+                        </DialogContent>
+                    </Dialog>
                 </div>
 
             </div>

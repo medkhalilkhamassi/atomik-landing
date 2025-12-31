@@ -70,5 +70,41 @@
         "message": "Message (optional)",
         "submit": "Submit",
         "submitting": "Submitting..."
+    },
+    "legal": {
+        "privacy": {
+            "title": "Privacy Policy",
+            "lastUpdated": "Last updated: December 2025",
+            "section1Title": "Information We Collect",
+            "section1Content": "We collect information you provide directly to us, such as your name, email address, and any other information you choose to provide when you sign up for our waitlist, request access, or contact us.",
+            "section2Title": "How We Use Your Information",
+            "section2Content": "We use the information we collect to provide, maintain, and improve our services, communicate with you about products, services, and events, and respond to your comments, questions, and requests.",
+            "section3Title": "Information Sharing",
+            "section3Content": "We do not sell, trade, or otherwise transfer your personal information to outside parties except to provide services you've requested, when required by law, or to protect our rights.",
+            "section4Title": "Data Security",
+            "section4Content": "We implement appropriate technical and organizational measures to protect the security of your personal information against unauthorized access, alteration, disclosure, or destruction.",
+            "section5Title": "Your Rights",
+            "section5Content": "You have the right to access, correct, or delete your personal information. You may also opt out of receiving promotional communications from us at any time.",
+            "contactTitle": "Contact Us",
+            "contactContent": "If you have any questions about this Privacy Policy, please contact us at hello@atomik.dev."
+        },
+        "terms": {
+            "title": "Terms of Service",
+            "lastUpdated": "Last updated: December 2025",
+            "section1Title": "Acceptance of Terms",
+            "section1Content": "By accessing or using Atomik's services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.",
+            "section2Title": "Use of Services",
+            "section2Content": "You may use our services only for lawful purposes and in accordance with these Terms. You agree not to use our services in any way that violates any applicable law or regulation.",
+            "section3Title": "Intellectual Property",
+            "section3Content": "All code delivered through Atomik becomes your property upon payment release from escrow. You receive full ownership and rights to use, modify, and distribute the code as you see fit.",
+            "section4Title": "Payment and Escrow",
+            "section4Content": "Payments are held in escrow until work is verified through automated testing. Upon successful verification, funds are released to the developer. Disputes are resolved through our objective arbitration process.",
+            "section5Title": "Limitation of Liability",
+            "section5Content": "Atomik shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services.",
+            "section6Title": "Changes to Terms",
+            "section6Content": "We reserve the right to modify these terms at any time. We will notify users of any material changes by posting the new Terms of Service on this page.",
+            "contactTitle": "Contact Us",
+            "contactContent": "If you have any questions about these Terms of Service, please contact us at hello@atomik.dev."
+        }
     }
 }

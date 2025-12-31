@@ -70,5 +70,41 @@
         "message": "Message (optionnel)",
         "submit": "Envoyer",
         "submitting": "Envoi..."
+    },
+    "legal": {
+        "privacy": {
+            "title": "Politique de Confidentialité",
+            "lastUpdated": "Dernière mise à jour : Décembre 2025",
+            "section1Title": "Informations que nous collectons",
+            "section1Content": "Nous collectons les informations que vous nous fournissez directement, telles que votre nom, adresse e-mail et toute autre information que vous choisissez de fournir lorsque vous vous inscrivez sur notre liste d'attente, demandez un accès ou nous contactez.",
+            "section2Title": "Comment nous utilisons vos informations",
+            "section2Content": "Nous utilisons les informations collectées pour fournir, maintenir et améliorer nos services, communiquer avec vous sur les produits, services et événements, et répondre à vos commentaires, questions et demandes.",
+            "section3Title": "Partage des informations",
+            "section3Content": "Nous ne vendons, n'échangeons ni ne transférons vos informations personnelles à des tiers, sauf pour fournir les services que vous avez demandés, lorsque la loi l'exige, ou pour protéger nos droits.",
+            "section4Title": "Sécurité des données",
+            "section4Content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger la sécurité de vos informations personnelles contre tout accès, modification, divulgation ou destruction non autorisés.",
+            "section5Title": "Vos droits",
+            "section5Content": "Vous avez le droit d'accéder, de corriger ou de supprimer vos informations personnelles. Vous pouvez également vous désinscrire des communications promotionnelles à tout moment.",
+            "contactTitle": "Nous contacter",
+            "contactContent": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à hello@atomik.dev."
+        },
+        "terms": {
+            "title": "Conditions d'Utilisation",
+            "lastUpdated": "Dernière mise à jour : Décembre 2025",
+            "section1Title": "Acceptation des conditions",
+            "section1Content": "En accédant ou en utilisant les services d'Atomik, vous acceptez d'être lié par ces conditions d'utilisation et toutes les lois et réglementations applicables. Si vous n'êtes pas d'accord avec ces conditions, il vous est interdit d'utiliser nos services.",
+            "section2Title": "Utilisation des services",
+            "section2Content": "Vous ne pouvez utiliser nos services qu'à des fins légales et conformément à ces conditions. Vous acceptez de ne pas utiliser nos services de manière à enfreindre toute loi ou réglementation applicable.",
+            "section3Title": "Propriété intellectuelle",
+            "section3Content": "Tout le code livré via Atomik devient votre propriété après la libération du paiement du séquestre. Vous recevez la pleine propriété et les droits d'utiliser, modifier et distribuer le code comme bon vous semble.",
+            "section4Title": "Paiement et séquestre",
+            "section4Content": "Les paiements sont conservés en séquestre jusqu'à ce que le travail soit vérifié par des tests automatisés. Après vérification réussie, les fonds sont libérés au développeur. Les litiges sont résolus par notre processus d'arbitrage objectif.",
+            "section5Title": "Limitation de responsabilité",
+            "section5Content": "Atomik ne sera pas responsable des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs résultant de votre utilisation de nos services.",
+            "section6Title": "Modifications des conditions",
+            "section6Content": "Nous nous réservons le droit de modifier ces conditions à tout moment. Nous informerons les utilisateurs de tout changement important en publiant les nouvelles conditions d'utilisation sur cette page.",
+            "contactTitle": "Nous contacter",
+            "contactContent": "Si vous avez des questions concernant ces conditions d'utilisation, veuillez nous contacter à hello@atomik.dev."
+        }
     }
 }
