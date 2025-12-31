@@ -23,8 +23,6 @@ export default function Footer() {
                 </div>
 
                 <div className="flex gap-8 text-sm text-muted-foreground">
-                    <a href="mailto:hello@atomik.dev?subject=Atomik%20Deck%20Request" className="hover:text-foreground transition-colors">{t('footer.deck')}</a>
-                    <span title="Coming Soon" className="cursor-not-allowed opacity-50">Twitter</span>
                     <span title="Coming Soon" className="cursor-not-allowed opacity-50">LinkedIn</span>
                 </div>
 
