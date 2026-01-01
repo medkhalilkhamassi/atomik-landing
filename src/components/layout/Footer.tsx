@@ -24,8 +24,7 @@ export default function Footer() {
                     <span className="text-sm text-muted-foreground">{t('footer.tagline')}</span>
                 </div>
 
-                <div className="flex gap-8 text-sm text-muted-foreground">
-                </div>
+                {/* Social links removed */}
 
                 <div className="flex gap-4 text-sm text-muted-foreground">
                     <Dialog>
