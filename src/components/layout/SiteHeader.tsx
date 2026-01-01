@@ -1,10 +1,10 @@
 'use client'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui/primitives/button'
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
+import { Button } from '@/components/ui/button'
+import { LanguageSwitcher } from '@/components/layout/language-switcher'
 import { useLocale } from '@/lib/i18n/LocaleContext'
 
 const menuItems = [

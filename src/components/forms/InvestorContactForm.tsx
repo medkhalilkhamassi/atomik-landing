@@ -73,7 +73,7 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
                     landingPath: attribution.landing_path || "",
                 };
 
-                const response = await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL!, {
+                const response = await fetch("/.netlify/functions/submit-to-n8n", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

@@ -5,7 +5,7 @@ import Agents from "@/components/sections/Agents/AgentsSection";
 import FAQ from "@/components/sections/FAQ/FAQSection";
 import Footer from "@/components/layout/Footer";
 import { SideNavigation } from '@/components/layout/SideNavigation';
-import { RevealOnScroll } from '@/components/ui/motion/RevealOnScroll';
+import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
 export default function Home() {
   return (

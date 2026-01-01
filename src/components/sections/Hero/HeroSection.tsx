@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
 import { ArrowUpRight, Mail, ArrowLeft, User } from "lucide-react"
-import SlideTextButton from "@/components/ui/buttons/SlideTextButton"
+import SlideTextButton from "@/components/ui/slide-text-button";
 import { HeroGeometricBackground } from "@/components/sections/Hero/HeroGeometricBackground"
 import { InvestorContactForm } from "@/components/forms/InvestorContactForm"
 import { getAttributionFromLocation, type AttributionData } from "@/lib/attribution"
@@ -101,7 +101,7 @@ export function HeroSection() {
 
             console.log("Submitting Waitlist to n8n webhook");
 
-            const response = await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL!, {
+            const response = await fetch("/.netlify/functions/submit-to-n8n", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

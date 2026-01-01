@@ -5,9 +5,11 @@ import {
     Dialog,
     DialogTrigger,
     DialogContent,
+    DialogHeader,
     DialogTitle,
     DialogDescription,
-} from '@/components/ui/primitives/dialog';
+} from '@/components/ui/dialog';
+import { LinkCard } from "@/components/ui/link-card";
 import { PrivacyContent, TermsContent } from './LegalContent';
 
 export default function Footer() {
@@ -23,7 +25,6 @@ export default function Footer() {
                 </div>
 
                 <div className="flex gap-8 text-sm text-muted-foreground">
-                    <span title="Coming Soon" className="cursor-not-allowed opacity-50">LinkedIn</span>
                 </div>
 
                 <div className="flex gap-4 text-sm text-muted-foreground">
