@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
-import { ArrowUpRight, Mail, ArrowLeft } from "lucide-react"
+import { ArrowUpRight, Mail, ArrowLeft, User } from "lucide-react"
 import SlideTextButton from "@/components/ui/buttons/SlideTextButton"
 import { HeroGeometricBackground } from "@/components/sections/Hero/HeroGeometricBackground"
 import { InvestorContactForm } from "@/components/forms/InvestorContactForm"
@@ -24,10 +24,11 @@ export function HeroSection() {
     const [attribution, setAttribution] = useState<AttributionData>({})
 
     // Waitlist Form State
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
     const [errorMessage, setErrorMessage] = useState("")
-    const emailInputRef = useRef<HTMLInputElement>(null)
+    const nameInputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
         const handleOpenWaitlist = () => {
@@ -43,10 +44,10 @@ export function HeroSection() {
     }, [])
 
     useEffect(() => {
-        if (showSuccess && mode === 'waitlist' && emailInputRef.current) {
+        if (showSuccess && mode === 'waitlist' && nameInputRef.current) {
             // Small delay to ensure transition fits
             setTimeout(() => {
-                emailInputRef.current?.focus()
+                nameInputRef.current?.focus()
             }, 100)
         }
     }, [showSuccess, mode])
@@ -85,6 +86,7 @@ export function HeroSection() {
         try {
             const formData = new FormData()
             formData.append("form-name", "waitlist")
+            formData.append("name", name)
             formData.append("email", email)
 
             // Analytics Fields
@@ -98,10 +100,10 @@ export function HeroSection() {
             if (attribution.referrer) formData.append("referrer", attribution.referrer)
             if (attribution.landing_path) formData.append("landing_path", attribution.landing_path)
 
-            console.log("Submitting Waitlist to Google Sheets");
+            console.log("Submitting Waitlist to n8n webhook");
 
-            // Submit to Netlify Function → Google Sheets
-            const response = await fetch("/api/submit-to-sheet", {
+            // Submit to n8n webhook
+            const response = await fetch("/api/submit-to-n8n", {
                 method: "POST",
                 body: formData,
             })
@@ -219,22 +221,41 @@ export function HeroSection() {
 
                                     <p className="hidden">
                                         <label>
-                                            Don’t fill this out: <input name="bot-field" />
+                                            Don't fill this out: <input name="bot-field" />
                                         </label>
                                     </p>
 
                                     <div className="relative w-full">
-                                        <input
-                                            ref={emailInputRef}
-                                            type="email"
-                                            name="email"
-                                            required
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            placeholder="name@work.com"
-                                            className="w-full h-12 bg-transparent border-b border-border text-center text-lg placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground transition-colors"
-                                            disabled={formStatus === 'submitting'}
-                                        />
+                                        <div className="flex items-center border-b border-border">
+                                            <User className="size-5 text-muted-foreground/50 mr-3" strokeWidth={1.5} />
+                                            <input
+                                                ref={nameInputRef}
+                                                type="text"
+                                                name="name"
+                                                required
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                                placeholder="Your name"
+                                                className="w-full h-12 bg-transparent text-lg placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
+                                                disabled={formStatus === 'submitting'}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="relative w-full">
+                                        <div className="flex items-center border-b border-border">
+                                            <Mail className="size-5 text-muted-foreground/50 mr-3" strokeWidth={1.5} />
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                required
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                placeholder="name@work.com"
+                                                className="w-full h-12 bg-transparent text-lg placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
+                                                disabled={formStatus === 'submitting'}
+                                            />
+                                        </div>
                                     </div>
 
                                     {errorMessage && (

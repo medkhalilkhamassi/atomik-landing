@@ -74,8 +74,8 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
                 if (attribution.referrer) formData.append("referrer", attribution.referrer);
                 if (attribution.landing_path) formData.append("landing_path", attribution.landing_path);
 
-                // Submit to Netlify Function → Google Sheets
-                const response = await fetch("/api/submit-to-sheet", {
+                // Submit to n8n webhook
+                const response = await fetch("/api/submit-to-n8n", {
                     method: "POST",
                     body: formData,
                 });
