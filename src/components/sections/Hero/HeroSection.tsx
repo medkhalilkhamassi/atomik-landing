@@ -102,8 +102,8 @@ export function HeroSection() {
 
             console.log("Submitting Waitlist to n8n webhook");
 
-            // Submit to n8n webhook
-            const response = await fetch("/api/submit-to-n8n", {
+            // Submit to Netlify function -> n8n webhook
+            const response = await fetch("/.netlify/functions/submit-to-n8n", {
                 method: "POST",
                 body: formData,
             })
