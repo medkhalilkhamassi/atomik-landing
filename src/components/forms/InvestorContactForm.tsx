@@ -55,29 +55,30 @@ export const InvestorContactForm = React.forwardRef<HTMLDivElement, InvestorCont
             }
 
             try {
-                const formData = new FormData();
-                formData.append("form-name", "investor-contact");
-                formData.append("firstName", firstName);
-                formData.append("lastName", lastName);
-                formData.append("email", email);
-                formData.append("company", company);
-                formData.append("position", position);
+                const payload = {
+                    formType: "investor",
+                    firstName,
+                    lastName,
+                    email,
+                    company,
+                    position,
+                    ctaSource,
+                    submittedAt: new Date().toISOString(),
+                    utmSource: attribution.utm_source || "",
+                    utmMedium: attribution.utm_medium || "",
+                    utmCampaign: attribution.utm_campaign || "",
+                    utmTerm: attribution.utm_term || "",
+                    utmContent: attribution.utm_content || "",
+                    referrer: attribution.referrer || "",
+                    landingPath: attribution.landing_path || "",
+                };
 
-                // Analytics Fields
-                formData.append("cta_source", ctaSource);
-                formData.append("submitted_at", new Date().toISOString());
-                if (attribution.utm_source) formData.append("utm_source", attribution.utm_source);
-                if (attribution.utm_medium) formData.append("utm_medium", attribution.utm_medium);
-                if (attribution.utm_campaign) formData.append("utm_campaign", attribution.utm_campaign);
-                if (attribution.utm_term) formData.append("utm_term", attribution.utm_term);
-                if (attribution.utm_content) formData.append("utm_content", attribution.utm_content);
-                if (attribution.referrer) formData.append("referrer", attribution.referrer);
-                if (attribution.landing_path) formData.append("landing_path", attribution.landing_path);
-
-                // Submit to Netlify function -> n8n webhook
-                const response = await fetch("/.netlify/functions/submit-to-n8n", {
+                const response = await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL!, {
                     method: "POST",
-                    body: formData,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(payload),
                 });
 
                 if (response.ok) {
